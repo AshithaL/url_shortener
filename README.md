@@ -1,5 +1,4 @@
 # Url_shortener in Golang
-=============================
 
 ## Steps to run
 
