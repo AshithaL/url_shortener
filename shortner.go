@@ -8,8 +8,8 @@ import (
 )
 
 type UrlShortener struct {
-	OriginalUrl string
-	ShortUrl    string
+	LongUrl  string
+	ShortUrl string
 }
 
 func response_data(o_url string) string {
@@ -29,15 +29,15 @@ func url_shortener(o_url string) (string, string) {
 }
 
 func (u *UrlShortener) short(o_url string) *UrlShortener {
-	shortUrl, originalUrl := url_shortener(o_url)
+	shortUrl, longurl := url_shortener(o_url)
 	u.ShortUrl = shortUrl
-	u.OriginalUrl = originalUrl
+	u.LongUrl = longurl
 	return u
 }
 
 func main() {
-	urlOrig := UrlShortener{}
-	urlOrig.short("https://www.geeksforgeeks.org/golang-tutorial-learn-go-programming-language/?ref=lbp")
-	fmt.Println("Original url is- \n",urlOrig.OriginalUrl)
-	fmt.Println("Shortened url is- \n",urlOrig.ShortUrl)
+	l_url := UrlShortener{}
+	l_url.short("https://www.geeksforgeeks.org/golang-tutorial-learn-go-programming-language/?ref=lbp")
+	fmt.Println("Original url is- \n", l_url.LongUrl)
+	fmt.Println("Shortened url is- \n", l_url.ShortUrl)
 }
