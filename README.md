@@ -23,13 +23,3 @@ data.go
 Here, we can store our Long url and short url
 and retrieve them accordingly.
 
-- Check db
-```
-select * from url_shortener;
-+----+-----------------------------+--------------------------------------------------------------------------------------+
-| id | slug                        | url                                                                                  |
-+----+-----------------------------+--------------------------------------------------------------------------------------+
-|  1 | http://tinyurl.com/ybms2dme | https://www.geeksforgeeks.org/golang-tutorial-learn-go-programming-language/?ref=lbp |
-+----+-----------------------------+--------------------------------------------------------------------------------------+
-```
-
