@@ -23,9 +23,9 @@ func response_data(o_url string) string {
 }
 
 func url_shortener(o_url string) (string, string) {
-	escapedUrl := url.QueryEscape(o_url)
-	tinyUrl := fmt.Sprintf("http://tinyurl.com/api-create.php?url=%s", escapedUrl)
-	return response_data(tinyUrl), o_url
+	eurl := url.QueryEscape(o_url)
+	gd := fmt.Sprintf("http://is.gd/create.php?url=%s&format=simple", eurl)
+	return response_data(gd), o_url
 }
 
 func (u *UrlShortener) short(o_url string) *UrlShortener {
