@@ -43,17 +43,14 @@ func (u *Redirect) short(urlOrig string) *Redirect {
 
 func main() {
 	var redirect Redirect
-	row := db.QueryRow("select id, slug, url from redirect where url = ?;", url_Orig)
-	err = row.Scan(&redirect.Id, &redirect.Slug, &redirect.Url)
+	query := db.QueryRow("select id, slug, url from redirect where url = ?;", url_Orig)
+	err = query.Scan(&redirect.Id, &redirect.Slug, &redirect.Url)
 	print(redirect.Slug)
 
 	if err != nil {
 
 		urlOrig := Redirect{}
 		urlOrig.short(url_Orig)
-		fmt.Println(urlOrig.Slug)
-		fmt.Println(urlOrig.Url)
-
 		Slug := urlOrig.Slug
 		Url := urlOrig.Url
 
