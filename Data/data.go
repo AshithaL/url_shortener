@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-type Redirect struct {
+type Url_slug struct {
 	Id 		int
 	Slug 	string 	`db:"slug" form:"slug"`
 	Url  	string	`db:"url" form:"url"`
@@ -34,7 +34,7 @@ func Url_Shortener(urlOrig string) (string, string) {
 	return getData(gd), urlOrig
 }
 
-func (u *Redirect) short(urlOrig string) *Redirect {
+func (u *Url_slug) short(urlOrig string) *Url_slug {
 	shortUrl, originalUrl := Url_Shortener(urlOrig)
 	u.Slug = shortUrl
 	u.Url = originalUrl
@@ -42,14 +42,14 @@ func (u *Redirect) short(urlOrig string) *Redirect {
 }
 
 func main() {
-	var redirect Redirect
-	query := db.QueryRow("select id, slug, url from redirect where url = ?;", url_Orig)
-	err = query.Scan(&redirect.Id, &redirect.Slug, &redirect.Url)
-	print(redirect.Slug)
+	var us Url_slug
+	query := db.QueryRow("select id, slug, url from url_shortener where url = ?;", url_Orig)
+	err = query.Scan(&us.Id, &us.Slug, &us.Url)
+	print(us.Slug)
 
 	if err != nil {
 
-		urlOrig := Redirect{}
+		urlOrig := Url_slug{}
 		urlOrig.short(url_Orig)
 		Slug := urlOrig.Slug
 		Url := urlOrig.Url
